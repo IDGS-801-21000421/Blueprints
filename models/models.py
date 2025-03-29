@@ -31,9 +31,9 @@ def insertar_registros_por_defecto(app):
                 password=generate_password_hash('admin123')
             )
             db.session.add(usuario)
-            print('✅ Usuario "admin" insertado.')
+            print('Usuario "admin" insertado.')
         else:
-            print(' Usuario "admin" ya existe.')
+            print('Usuario "admin" ya existe.')
 
         if not Proveedor.query.filter_by(email='proveedor@demo.com').first():
             proveedor = Proveedor(

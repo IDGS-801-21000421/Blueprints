@@ -16,7 +16,6 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(DevelopmentConfig)
 
-    # Inicializar extensiones
     db.init_app(app)
     csrf.init_app(app)
 
@@ -31,13 +30,11 @@ def create_app():
     def load_user(user_id):
         return Usuarios.query.get(int(user_id))
     
-    # Registro de Blueprints
     app.register_blueprint(login_bp)
     app.register_blueprint(usuarios_bp)
     app.register_blueprint(proveedores_bp)
     app.register_blueprint(ventas_bp)
 
-    # Crear tablas
     with app.app_context():
         db.create_all()
         insertar_registros_por_defecto(app)        
