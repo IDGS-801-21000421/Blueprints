@@ -1,0 +1,29 @@
+{
+  "name": "blueprints",
+  "version": "1.0.0",
+  "description": "Este repositorio se usara para la elaboración de la actividad de Blueprints",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IDGS-801-21000421/Blueprints.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IDGS-801-21000421/Blueprints/issues"
+  },
+  "homepage": "https://github.com/IDGS-801-21000421/Blueprints#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.17"
+  },
+  "dependencies": {
+    "blueprints": "file:",
+    "flowbite": "^3.1.2"
+  }
+}

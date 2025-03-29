@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block title %}Punto de Venta{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+
+  <!-- Formulario Pedido -->
+  <section class="glass p-6 rounded-xl border border-cyan-800 shadow-xl">
+    <h2 class="text-xl font-bold text-cyan-400 mb-6 uppercase tracking-wide">Nuevo Pedido</h2>
+
+    <form class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" placeholder="Nombre del cliente" class="px-4 py-2 bg-[#0e1a24] border border-cyan-700 rounded">
+        <input type="text" placeholder="Dirección" class="px-4 py-2 bg-[#0e1a24] border border-cyan-700 rounded">
+        <input type="tel" placeholder="Teléfono" class="px-4 py-2 bg-[#0e1a24] border border-cyan-700 rounded">
+        <input type="number" placeholder="Número de pizzas" class="px-4 py-2 bg-[#0e1a24] border border-cyan-700 rounded">
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-cyan-300 mb-2">Tamaño Pizza</h3>
+          <div class="space-y-1">
+            <label class="flex items-center gap-2"><input type="radio" name="tamano" class="form-radio text-cyan-500"> Chica $40</label>
+            <label class="flex items-center gap-2"><input type="radio" name="tamano" class="form-radio text-cyan-500"> Mediana $80</label>
+            <label class="flex items-center gap-2"><input type="radio" name="tamano" class="form-radio text-cyan-500"> Grande $120</label>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-cyan-300 mb-2">Ingredientes</h3>
+          <div class="space-y-1">
+            <label class="flex items-center gap-2"><input type="checkbox" class="form-checkbox text-cyan-500"> Jamón $10</label>
+            <label class="flex items-center gap-2"><input type="checkbox" class="form-checkbox text-cyan-500"> Piña $10</label>
+            <label class="flex items-center gap-2"><input type="checkbox" class="form-checkbox text-cyan-500"> Champiñones $10</label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="px-5 py-2 bg-cyan-700 hover:bg-cyan-600 rounded transition">Agregar</button>
+    </form>
+  </section>
+
+  <!-- Tabla Pedido Actual y Ventas del Día -->
+  <div class="flex flex-col gap-8">
+    <!-- Tabla Pedido Actual -->
+    <section class="glass p-6 rounded-xl border border-cyan-800 shadow-xl">
+      <h2 class="text-xl font-bold text-cyan-400 mb-4 uppercase tracking-wide">Pedido Actual</h2>
+      <table class="w-full text-sm text-gray-300">
+        <thead class="text-cyan-300">
+          <tr>
+            <th class="py-2">Tamaño</th>
+            <th class="py-2">Ingredientes</th>
+            <th class="py-2">Num. Pizzas</th>
+            <th class="py-2">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-gray-700">
+            <td class="py-2">Mediana</td>
+            <td class="py-2">Jamón, Piña</td>
+            <td class="py-2">2</td>
+            <td class="py-2">$180</td>
+          </tr>
+          <!-- Más filas dinámicas aquí -->
+        </tbody>
+      </table>
+      <div class="mt-4 flex justify-end gap-3">
+        <button class="px-4 py-2 bg-red-600 hover:bg-red-500 rounded">Quitar</button>
+        <button class="px-4 py-2 bg-green-600 hover:bg-green-500 rounded">Terminar</button>
+      </div>
+    </section>
+
+    <!-- Ventas del Día -->
+    <section class="glass p-6 rounded-xl border border-cyan-800 shadow-xl">
+      <h2 class="text-xl font-bold text-cyan-400 mb-4 uppercase tracking-wide">Ventas del Día</h2>
+      <div class="space-y-2">
+        <p class="text-lg">Mario Juárez - Total: <span class="font-bold">$550</span></p>
+        <p class="text-lg">Juan Ramírez - Total: <span class="font-bold">$250</span></p>
+        <hr class="border-cyan-700">
+        <p class="text-xl font-bold">Ventas Totales: $800</p>
+      </div>
+      <button class="mt-4 px-4 py-2 bg-cyan-700 hover:bg-cyan-600 rounded transition">Ver detalles</button>
+    </section>
+
+  </div>
+
+</div>
+{% endblock %}

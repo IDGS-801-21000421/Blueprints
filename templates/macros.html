@@ -1,0 +1,71 @@
+{# Macro para renderizar campos de formulario #}
+{% macro render_field(field, label=None, label_class="", input_class="", input_type="text", options=None) %}
+<div class="mb-4">
+    {% if label %}
+        <label class="{{ label_class }}">{{ label }}</label>
+    {% else %}
+        {{ field.label(class=label_class) }}
+    {% endif %}
+
+    {% if input_type == 'select' and options %}
+        <select name="{{ field.name }}" id="{{ field.id }}" class="{{ input_class }}">
+            {% for val, text in options %}
+                <option value="{{ val }}" {% if field.data == val %}selected{% endif %}>
+                    {{ text }}
+                </option>
+            {% endfor %}
+        </select>
+    {% else %}
+        {{ field(class=input_class, type=input_type) }}
+    {% endif %}
+
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <p class="text-red-500 text-sm">{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endmacro %}
+
+{# Macro para renderizar notificaciones tipo flash estilo "neón" #}
+{% macro render_flash_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-container" class="fixed top-4 right-4 space-y-4 z-50">
+                {% for category, message in messages %}
+                    <div class="flash-message flex items-center gap-3 p-4 rounded-lg border neon-shadow
+                        {% if category == 'success' %}
+                            bg-black bg-opacity-80 border-green-500 text-green-300
+                        {% elif category == 'error' %}
+                            bg-black bg-opacity-80 border-red-500 text-red-300
+                        {% elif category == 'warning' %}
+                            bg-black bg-opacity-80 border-yellow-400 text-yellow-200
+                        {% elif category == 'info' %}
+                            bg-black bg-opacity-80 border-blue-500 text-blue-300
+                        {% else %}
+                            bg-black bg-opacity-80 border-gray-400 text-gray-300
+                        {% endif %}"
+                    >
+                        <div class="text-2xl">
+                            {% if category == 'success' %}
+                                ✅
+                            {% elif category == 'error' %}
+                                ❌
+                            {% elif category == 'warning' %}
+                                ⚠️
+                            {% elif category == 'info' %}
+                                ℹ️
+                            {% else %}
+                                📢
+                            {% endif %}
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-bold capitalize">{{ category }}</p>
+                            <p>{{ message }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endmacro %}
